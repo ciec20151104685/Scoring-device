@@ -13,44 +13,78 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+   
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     @IBOutlet weak var displayA: UITextField!
     @IBOutlet weak var displayB: UITextField!
+    @IBOutlet weak var displayFA: UITextField!
+    @IBOutlet weak var displayFB: UITextField!
     var a = 0
     var b = 0
+    var c ＝ 0
+    var FinalA = 0
+    var FinalB = 0
+    let AWin = "甲赢得了比赛"
+    let BWin = "乙赢得了比赛"
+    func JudgeWhoWin (){
+        if FinalA==2
+        {
+            displayFA.text = AWin
+            FinalWinner()
+        }
+        if FinalB==2
+        {
+            displayFB.text = BWin
+            FinalWinner()
+        }
+
+    }
+    func FinalWinner(){
+        let alert = UIAlertView(title: "三局俩胜", message: "一方胜出", delegate: self, cancelButtonTitle: "再来一句")
+        alert.alertViewStyle = UIAlertViewStyle.default
+        alert.show()
+    }
     func showAlertWorry(){
         let alert = UIAlertView(title: "错误", message: "分数不可低于零", delegate: self, cancelButtonTitle: "Fuck")
         alert.alertViewStyle = UIAlertViewStyle.default
-        
         alert.show()
     }
     func showAlertAWin(){
-        let alert = UIAlertView(title: "恭喜", message: "a赢了", delegate: self, cancelButtonTitle: "重新开始")
+        let alert = UIAlertView(title: "恭喜", message: "此场甲赢", delegate: self, cancelButtonTitle: "继续比赛")
         alert.alertViewStyle = UIAlertViewStyle.default
         
         alert.show()
         a=0
         displayA.text =  "\(a)"
+        b=0
+        displayB.text =  "\(b)"
+        FinalA = FinalA + 1
+        displayFA.text = "\(FinalA)"
+        JudgeWhoWin ()
     }
     func showAlertBWin(){
-        let alert = UIAlertView(title: "恭喜", message: "b赢了", delegate: self, cancelButtonTitle: "重新开始")
+        let alert = UIAlertView(title: "恭喜", message: "此场乙赢", delegate: self, cancelButtonTitle: "继续比赛")
         alert.alertViewStyle = UIAlertViewStyle.default
         
         alert.show()
+        a=0
+        displayA.text =  "\(a)"
         b=0
         displayB.text =  "\(b)"
+        FinalB = FinalB + 1
+        displayFB.text = "\(FinalB)"
+        JudgeWhoWin ()
     }
     
     @IBAction func addA(_ sender: UIButton) {
         a=a+1
         displayA.text = "\(a)"
-        if a==8{
+        if a==8 && FinalA<2{
             showAlertAWin()
         }
      
@@ -69,7 +103,7 @@ class ViewController: UIViewController {
     @IBAction func addB(_ sender: Any) {
         b=b+1
         displayB.text =  "\(b)"
-        if b == 8{
+        if b == 8 && FinalB<2{
         showAlertBWin()
         }
     }
@@ -86,8 +120,15 @@ class ViewController: UIViewController {
     }
     
     @IBAction func begangame(_ sender: UIButton) {
+        a = 0
+        b = 0
+        FinalA = 0
+        FinalB = 0
         displayB.text="\(b)"
         displayA.text="\(a)"
+        displayFA.text="\(FinalA)"
+        displayFB.text="\(FinalB)"
+        
     }
   
     

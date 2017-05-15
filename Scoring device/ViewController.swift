@@ -7,7 +7,9 @@
 //
 
 import UIKit
-
+var flagA : Int=0
+var flagB : Int=0
+var dlg : Int = 0
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -20,17 +22,52 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
     @IBOutlet weak var displayA: UITextField!
     @IBOutlet weak var displayB: UITextField!
     @IBOutlet weak var displayFA: UITextField!
     @IBOutlet weak var displayFB: UITextField!
+    @IBOutlet weak var phA: UIImageView!
+    @IBOutlet weak var phB: UIImageView!
+    @IBAction func UPloadA(_ sender: UIButton) {
+        if dlg==0{
+            flagA=1
+            flagB=0
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+                let picker = UIImagePickerController()
+                //picker.delegate = self
+                picker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+                self.present(picker, animated: true, completion: {
+                    () -> Void in
+                })
+            }else{
+                
+                print("读取相册错误")
+            }
+        }
+
+    }
+ 
+    @IBAction func UploadB(_ sender: UIButton) {
+    
+    }
     var a = 0
     var b = 0
-
     var FinalA = 0
     var FinalB = 0
     let AWin = "甲赢得了比赛"
     let BWin = "乙赢得了比赛"
+       func Reflash(){
+        a = 0
+        b = 0
+        FinalA = 0
+        FinalB = 0
+        displayB.text="\(b)"
+        displayA.text="\(a)"
+        displayFA.text="\(FinalA)"
+        displayFB.text="\(FinalB)"
+    }
+        
     func JudgeWhoWin (){
         if FinalA==2
         {
@@ -48,6 +85,9 @@ class ViewController: UIViewController {
         let alert = UIAlertView(title: "三局俩胜", message: "一方胜出", delegate: self, cancelButtonTitle: "再来一句")
         alert.alertViewStyle = UIAlertViewStyle.default
         alert.show()
+        
+        Reflash()
+        
     }
     func showAlertWorry(){
         let alert = UIAlertView(title: "错误", message: "分数不可低于零", delegate: self, cancelButtonTitle: "Fuck")
@@ -132,70 +172,6 @@ class ViewController: UIViewController {
     }
   
     
-    class ViewController: UIViewController, UIImagePickerControllerDelegate,
-    UINavigationControllerDelegate {
-        
-        @IBOutlet weak var imageView: UIImageView!
-        @IBOutlet weak var editSwitch: UISwitch!
-        
-        override func viewDidLoad() {
-            super.viewDidLoad()
-        }
-        
-        //选取相册
-        @IBAction func fromAlbum(_ sender: AnyObject) {
-            //判断设置是否支持图片库
-            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
-                //初始化图片控制器
-                let picker = UIImagePickerController()
-                //设置代理
-                picker.delegate = self
-                //指定图片控制器类型
-                picker.sourceType = UIImagePickerControllerSourceType.photoLibrary
-                //设置是否允许编辑
-                picker.allowsEditing = editSwitch.isOn
-                //弹出控制器，显示界面
-                self.present(picker, animated: true, completion: {
-                    () -> Void in
-                })
-            }else{
-                print("读取相册错误")
-            }
-            
-        }
-        
-        //选择图片成功后代理
-        func imagePickerController(_ picker: UIImagePickerController,
-                                   didFinishPickingMediaWithInfo info: [String : Any]) {
-            //查看info对象
-            print(info)
-            
-            //显示的图片
-            let image:UIImage!
-            if editSwitch.isOn {
-                //获取编辑后的图片
-                image = info[UIImagePickerControllerEditedImage] as! UIImage
-            }else{
-                //获取选择的原图
-                image = info[UIImagePickerControllerOriginalImage] as! UIImage
-            }
-            
-            imageView.image = image
-            //图片控制器退出
-            picker.dismiss(animated: true, completion: {
-                () -> Void in
-            })
-        }
-        
-        override func didReceiveMemoryWarning() {
-            super.didReceiveMemoryWarning()
-        }
-    }
-    
-    
-    
-    
-    
-
 }
 
+       

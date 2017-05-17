@@ -148,7 +148,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1372" y="-931"/>
+            <point key="canvasLocation" x="2394" y="-931"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="79o-W9-rhK">
@@ -209,17 +209,17 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U1L-4m-g7x">
-                                <rect key="frame" x="94" y="240" width="46" height="30"/>
+                                <rect key="frame" x="71" y="240" width="92" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="上传甲队队徽"/>
                                 <connections>
                                     <action selector="UPloadA:" destination="sfA-sK-HWc" eventType="touchUpInside" id="P0T-kQ-czH"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sSu-eK-LZV">
-                                <rect key="frame" x="258" y="240" width="46" height="108"/>
+                                <rect key="frame" x="235" y="201" width="92" height="108"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="上传乙队队徽"/>
                                 <connections>
                                     <action selector="UploadB:" destination="sfA-sK-HWc" eventType="touchUpInside" id="ROs-9y-cww"/>
                                 </connections>
@@ -234,7 +234,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mau-qM-b9g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1341.5999999999999" y="-823.53823088455783"/>
+            <point key="canvasLocation" x="2297" y="-1003"/>
         </scene>
     </scenes>
     <resources>
